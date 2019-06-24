@@ -12,20 +12,67 @@
             <h6 class="col-sm-12 font title">ثبت نام</h6>
 
             <div class="col-sm-12">
-              <input type="text" class="form-control font" name="username" placeholder="نام کاربری" required="" autofocus=""/>
-              <input type="email" class="form-control font" name="email" placeholder="ایمیل" required=""/>
-              <input list="browsers" name="departeman" class="form-control font">
-              <datalist id="browsers">
-                <option value="مهندسی کامپیوتر"/>
-                <option value="مهندسی برق"/>
-                <option value="علوم کامپیوتر"/>
-                <option value="مهندسی پزشکی"/>
-                <option value="دندان پزشکی"/>
-              </datalist>
-              <input type="password" class="form-control font" name="password" placeholder="رمز عبور" required=""/>
+              <input type="text"
+                     class="form-control font"
+                     name="username"
+                     placeholder="نام کاربری"
+                     required=""
+                     autofocus=""
+                     v-model="user.userName"
+              />
+              <input type="email"
+                     class="form-control font"
+                     name="email"
+                     placeholder="ایمیل"
+                     required=""
+                     v-model="user.email"
+              />
+              <select
+                name="department"
+                class="form-control font"
+                v-model="user.department">
+                <option
+                  v-for="dep in departments"
+                  :key="dep"
+                >{{ dep }}</option>
+
+              </select>
+              <input type="password"
+                     class="form-control font"
+                     name="password"
+                     placeholder="رمز عبور"
+                     required=""
+                     v-model="user.password"/>
+              <div class="font radio-role form-group col-sm-8 col-sm-offset-2">
+                <nav class="nav nav-pills nav-justified">
+                  <li>
+                    <input
+                      type="radio"
+                      id="student"
+                      value="student"
+                      v-model="user.role">
+                    <label for="student"> دانشجو</label>
+                  </li><li>
+                  <input
+                    type="radio"
+                    id="professor"
+                    value="professor"
+                    v-model="user.role">
+                  <label for="professor"> استاد</label>
+                </li><li>
+                  <input
+                    type="radio"
+                    id="employee"
+                    value="employee"
+                    v-model="user.role">
+                  <label for="employee"> کارمند</label>
+                </li>
+                </nav>
+              </div>
             </div>
+
             <div class="col-sm-12 text-center">
-              <button class="btn font" type="submit">ثبت نام</button>
+              <button class="btn font" type="submit" @click.prevent="registerBtn">ثبت نام</button>
             </div>
             <div class="col-sm-12 text-center">
               <router-link to="/Login" tag="a" class="font">حساب کاربری دارم</router-link>
@@ -43,7 +90,57 @@
 
 <script>
     export default {
-        name: "Register"
+      name: "Register",
+      data(){
+        return {
+          user: {
+            userName: '',
+            email: '',
+            department:'',
+            password: '',
+            role: ''
+          },
+          departments: []
+        }
+      },
+      methods : {
+        registerBtn(){
+
+          this.$http.post('/register',
+            this.user,
+            {
+              headers: {'sessionId': this.$store.getters.sessionId}
+            }).then(
+            response =>{
+              // success callback
+
+            },
+            error => {
+              // error callback
+
+            });
+        },
+      },
+      mounted() {
+
+        this.$http.get('/departments',
+          {
+            headers: {'sessionId': this.$store.getters.sessionId}
+          }).then(
+          response => {
+          // success callback
+              response.json().then(
+                data => {
+                  this.departments = data;
+                }
+              )
+          },
+          error => {
+          // error callback
+
+          });
+
+      }
     }
 </script>
 

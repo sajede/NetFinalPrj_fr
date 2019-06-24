@@ -20,6 +20,22 @@ export default {
     return {
       msg: 'Welcome to Your Vue.js App'
     }
+  },
+  mounted() {
+
+    this.$http.get('/session',
+      {
+        // headers: {'sessionId': this.$store.getters.sessionId}
+      }).then(
+      response => {
+        // success callback
+        this.$store.commit('sessionId', response.headers.get('sessionId') );
+      },
+      error => {
+        // error callback
+
+      });
+
   }
 }
 </script>

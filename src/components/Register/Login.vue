@@ -12,8 +12,20 @@
             <h6 class="col-sm-12 font title">ورود</h6>
 
             <div class="col-sm-12">
-              <input type="text" class="form-control font" name="username" placeholder="نام کاربری" required="" autofocus=""/>
-              <input type="password" class="form-control font" name="password" placeholder="رمز عبور" required=""/>
+              <input type="text"
+                     class="form-control font"
+                     name="username"
+                     placeholder="نام کاربری"
+                     required=""
+                     autofocus=""
+                     v-model="user.userName"
+              />
+              <input type="password"
+                     class="form-control font"
+                     name="password"
+                     placeholder="رمز عبور"
+                     required=""
+                     v-model="user.password"/>
             </div>
             <div class="col-sm-12 text-center">
               <button class="btn font" type="submit">ثبت نام</button>
@@ -34,7 +46,18 @@
 
 <script>
   export default {
-    name: "Login"
+    name: "Login",
+    data(){
+      return {
+        user: {
+          userName: '',
+          email: '',
+          department:'',
+          password: '',
+          role: ''
+        }
+      }
+    },
   }
 </script>
 

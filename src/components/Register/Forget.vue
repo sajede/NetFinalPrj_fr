@@ -12,7 +12,13 @@
             <h6 class="col-sm-12 font title">فراموشی رمز عبور</h6>
 
             <div class="col-sm-12">
-              <input type="email" class="form-control font" name="email" placeholder="ایمیل" required=""/>
+              <input type="email"
+                     class="form-control font"
+                     name="email"
+                     placeholder="ایمیل"
+                     required=""
+                     v-model="user.email"
+              />
             </div>
             <div class="col-sm-12 text-center">
               <button class="btn font" type="submit">ارسال رمز عبور</button>
@@ -30,7 +36,18 @@
 
 <script>
   export default {
-    name: "Forget"
+    name: "Forget",
+    data(){
+      return {
+        user: {
+          userName: '',
+          email: '',
+          department:'',
+          password: '',
+          role: ''
+        }
+      }
+    },
   }
 </script>
 
