@@ -25,7 +25,7 @@
                      name="email"
                      placeholder="ایمیل"
                      required=""
-                     v-model="user.email"
+                     v-model="user.emailAddress"
               />
               <select
                 name="department"
@@ -95,7 +95,9 @@
         return {
           user: {
             userName: '',
-            email: '',
+            name: '',
+            family: '',
+            emailAddress: '',
             department:'',
             password: '',
             role: ''

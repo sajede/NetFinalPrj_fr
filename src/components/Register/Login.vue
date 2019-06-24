@@ -51,7 +51,7 @@
       return {
         user: {
           userName: '',
-          email: '',
+          emailAddress: '',
           department:'',
           password: '',
           role: ''

@@ -17,7 +17,7 @@
                      name="email"
                      placeholder="ایمیل"
                      required=""
-                     v-model="user.email"
+                     v-model="user.emailAddress"
               />
             </div>
             <div class="col-sm-12 text-center">
@@ -41,7 +41,7 @@
       return {
         user: {
           userName: '',
-          email: '',
+          emailAddress: '',
           department:'',
           password: '',
           role: ''
