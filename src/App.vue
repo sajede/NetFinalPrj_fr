@@ -25,11 +25,11 @@ export default {
 
     this.$http.get('/session',
       {
-        // headers: {'sessionId': this.$store.getters.sessionId}
+        // headers: {'SessionID': this.$store.getters.sessionId}
       }).then(
       response => {
         // success callback
-        this.$store.commit('sessionId', response.headers.get('sessionId') );
+        this.$store.commit('sessionId', response.headers.get('SessionID') );
       },
       error => {
         // error callback

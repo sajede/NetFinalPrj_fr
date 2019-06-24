@@ -1,5 +1,5 @@
 const state = {
-  sessionId: ''
+  sessionId: 'Not assigned'
 };
 
 const getters = {

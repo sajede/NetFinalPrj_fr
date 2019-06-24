@@ -8,7 +8,7 @@ import { routes } from './routes';
 import { store } from './store/store';
 
 Vue.use(VueResource);
-Vue.http.options.root = 'main URL';
+Vue.http.options.root = 'http://localhost:8080/contacts/rest/';
 
 Vue.use(VueRouter);
 const router = new VueRouter({

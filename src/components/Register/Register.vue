@@ -105,19 +105,18 @@
       },
       methods : {
         registerBtn(){
-
-          this.$http.post('/register',
+          this.$http.post('user/register',
             this.user,
             {
-              headers: {'sessionId': this.$store.getters.sessionId}
+              headers: {'SessionID': this.$store.getters.sessionId}
             }).then(
             response =>{
               // success callback
+              this.$store.commit('sessionId', response.headers.get('SessionID') );
 
             },
             error => {
               // error callback
-
             });
         },
       },
@@ -125,7 +124,7 @@
 
         this.$http.get('/departments',
           {
-            headers: {'sessionId': this.$store.getters.sessionId}
+            headers: {'SessionID': this.$store.getters.sessionId}
           }).then(
           response => {
           // success callback

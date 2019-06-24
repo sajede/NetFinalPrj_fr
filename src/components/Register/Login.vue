@@ -28,7 +28,7 @@
                      v-model="user.password"/>
             </div>
             <div class="col-sm-12 text-center">
-              <button class="btn font" type="submit">ثبت نام</button>
+              <button class="btn font" type="submit">ورود</button>
             </div>
             <div class="col-sm-12 text-center">
               <router-link to="/Forget" tag="a" class="font">فراموشی رمز عبور</router-link>
