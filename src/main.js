@@ -12,6 +12,7 @@ Vue.http.options.root = 'main URL';
 
 Vue.use(VueRouter);
 const router = new VueRouter({
+  mode: 'history',
   routes
 });
 

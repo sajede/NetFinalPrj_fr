@@ -4,7 +4,7 @@
 
 <script>
     export default {
-        name: "Intruduction"
+        name: "Register"
     }
 </script>
 
