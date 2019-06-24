@@ -9,20 +9,29 @@
       </div>
 
       <div class="row">
-        <div class="col-md-6">
-          <label for="lname">موضوع</label>
-          <input type="text" id="lname">
+        <div class="col-md-6 ">
+          <label>نوع درخواست</label>
+          <select
+            name="fname"
+            class="form-control font"
+            v-model="caseParam.type">
+            <option
+              v-for="type in types"
+              :key="type"
+            >{{ type }}</option>
+
+          </select>
         </div>
         <div class="col-md-6">
           <label>دریافت کننده</label>
           <select
             name="fname"
             class="form-control font"
-            v-model="user.receiver">
+            v-model="caseParam.referrer">
             <option
-              v-for="dep in receivers"
-              :key="dep"
-            >{{ dep }}</option>
+              v-for="ref in referrers"
+              :key="ref"
+            >{{ ref }}</option>
 
           </select>
         </div>
@@ -30,17 +39,18 @@
 
       <div class="row">
         <div class="col-md-6"/>
-        <div class="col-md-6 ">
-          <label for="username">موضوع</label>
-          <input type="text" id="username">
+        <div class="col-md-6">
+          <label for="topic">عنوان</label>
+          <input type="text" id="topic" v-model="caseParam.topic">
         </div>
+
       </div>
 
       <div class="row">
         <div class="col-md-6"/>
         <div class="col-md-6 ">
-          <label for="description">موضوع</label>
-          <textarea id="description" rows="12"/>
+          <label for="description">شرح مورد</label>
+          <textarea id="description" rows="12" v-model="caseParam.comment"/>
         </div>
       </div>
       <div class="col-md-12 text-center">
@@ -57,17 +67,17 @@
     name: "NewCase",
     data(){
       return {
-        user: {
-          userName: '',
-          name: '',
-          family: '',
-          emailAddress: '',
-          department:'',
-          password: '',
-          role: '',
-          receiver: ''
+        caseParam: {
+          sendDate: 'dd/mm/yyyy',
+          referrerNumbers: 'ارجاع به',
+          topic: 'موضوع',
+          type: '',
+          proceedingStatus: 'باز',
+          satisfactionStatus: '',
+          comment: '',
         },
-         receivers : ['sds','sdsd']
+        referrers : ['دکتر شمس','دکتر قوامی','دکتر علی اکبری'],
+        types : ['انتقاد','درخواست','پیشنهاد']
       }
     },
     mounted() {
