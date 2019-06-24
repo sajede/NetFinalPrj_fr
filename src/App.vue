@@ -28,9 +28,13 @@ export default {
 
   #app {
     min-height: 100vh;
+    margin: 0;
+    padding: 0;
   }
+
   #viewContainer {
-    min-height: 60vh;
+    min-height: 70vh;
+    margin: 0;
     /*width: 100vw;*/
   }
 

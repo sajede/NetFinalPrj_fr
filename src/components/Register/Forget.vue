@@ -9,17 +9,13 @@
       <div class="col-md-6 col-sm-12">
         <form class="row">
           <div>
-            <h6 class="col-sm-12 font title">ورود</h6>
+            <h6 class="col-sm-12 font title">فراموشی رمز عبور</h6>
 
             <div class="col-sm-12">
-              <input type="text" class="form-control font" name="username" placeholder="نام کاربری" required="" autofocus=""/>
-              <input type="password" class="form-control font" name="password" placeholder="رمز عبور" required=""/>
+              <input type="email" class="form-control font" name="email" placeholder="ایمیل" required=""/>
             </div>
             <div class="col-sm-12 text-center">
-              <button class="btn font" type="submit">ثبت نام</button>
-            </div>
-            <div class="col-sm-12 text-center">
-              <router-link to="/Forget" tag="a" class="font">فراموشی رمز عبور</router-link>
+              <button class="btn font" type="submit">ارسال رمز عبور</button>
             </div>
 
           </div>
@@ -34,7 +30,7 @@
 
 <script>
   export default {
-    name: "Login"
+    name: "Forget"
   }
 </script>
 
