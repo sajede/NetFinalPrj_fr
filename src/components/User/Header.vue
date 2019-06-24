@@ -3,9 +3,9 @@
     <nav class="navbar">
       <div class="container-fluid">
         <ul class="nav nav-pills nav-justified">
-          <router-link to="/" tag="li" class="nav-item"><a>ثبت مورد</a></router-link>
-          <router-link to="/" tag="li" class="nav-item"><a>مشاهده موارد</a></router-link>
-          <router-link to="/" tag="li" class="nav-item"><a>راهنما</a></router-link>
+          <router-link to="/user/newcase" tag="li" class="nav-item"><a>ثبت مورد</a></router-link>
+          <router-link to="/user/list/:page" tag="li" class="nav-item"><a>مشاهده موارد</a></router-link>
+          <router-link to="/help" tag="li" class="nav-item"><a>راهنما</a></router-link>
         </ul>
       </div>
     </nav>
