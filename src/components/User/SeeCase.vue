@@ -36,7 +36,12 @@
         </div>
       </div>
       <div v-if="$store.getters.userRole != 'student'" class="col-md-12 text-center">
-        <button class="btn" @click="closeCase">بستن این مورد</button>
+        <button class="btn" @click.prevent="closeCase">اقدام و بستن این مورد</button>
+        <button class="btn button1" @click.prevent="refering">ارجاع</button>
+      </div>
+
+      <div v-if="$store.getters.userRole == 'student'" class="col-md-12 text-center">
+        <button class="btn" @click.prevent="backToList">بازشگت</button>
       </div>
 
 
@@ -64,6 +69,12 @@
     methods : {
       closeCase() {
         this.$router.push('/user/list/'+1);
+      },
+      backToList() {
+        this.$router.push('/user/list/'+1);
+      },
+      refering() {
+        this.$router.push('/user/refer/'+this.$route.params.id );
       }
     },
     mounted() {
@@ -116,10 +127,22 @@
 
   button{
     color: white;
-    background-color: rgb(48, 63, 159);
+    background-color: #303f9f;
   }
+
   button:hover {
     color: white;
     background-color: rgb(48, 63, 159, 0.9);
   }
+
+  .button1{
+    color: white;
+    background-color: rgb(255, 175, 32);
+  }
+
+  .button1:hover {
+    color: white;
+    background-color: rgb(255, 175, 32, 0.8);
+  }
+
 </style>

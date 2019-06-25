@@ -41,7 +41,7 @@
 
         <div class="row">
           <div class="col-md-6 row">
-            <a href="#opinion_popup">
+            <a v-if="$store.getters.userRole == 'student'" href="#opinion_popup">
               <button class="btn button2">ثبت رضایت</button>
             </a>
             <button class="btn button1" @click="seeCase(caseParam.id)">مشاهده مورد</button>
