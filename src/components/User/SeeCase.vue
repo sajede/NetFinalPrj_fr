@@ -4,36 +4,18 @@
 
       <div class="row">
         <div class="col-md-12">
-          <h3 class="title font">ثبت مورد</h3>
+          <h3 class="title font">مشاهده مورد</h3>
         </div>
       </div>
 
       <div class="row">
         <div class="col-md-6 ">
           <label>نوع مورد</label>
-          <select
-            name="fname"
-            class="form-control font"
-            v-model="caseParam.type">
-            <option
-              v-for="type in types"
-              :key="type"
-            >{{ type }}</option>
-
-          </select>
+          <input type="text" v-model="caseParam.type" disabled>
         </div>
         <div class="col-md-6">
           <label>دریافت کننده</label>
-          <select
-            name="fname"
-            class="form-control font"
-            v-model="caseParam.referrer">
-            <option
-              v-for="ref in referrers"
-              :key="ref"
-            >{{ ref }}</option>
-
-          </select>
+          <input type="text" v-model="caseParam.referrerNumbers" disabled>
         </div>
       </div>
 
@@ -41,7 +23,7 @@
         <div class="col-md-6"/>
         <div class="col-md-6">
           <label for="topic">عنوان</label>
-          <input type="text" id="topic" v-model="caseParam.topic">
+          <input type="text" id="topic" v-model="caseParam.topic" disabled>
         </div>
 
       </div>
@@ -50,11 +32,11 @@
         <div class="col-md-6"/>
         <div class="col-md-6 ">
           <label for="description">شرح مورد</label>
-          <textarea id="description" rows="12" v-model="caseParam.comment"/>
+          <textarea id="description" rows="12" v-model="caseParam.comment" disabled/>
         </div>
       </div>
-      <div class="col-md-12 text-center">
-        <button class="btn" id="email">ثبت مورد</button>
+      <div v-if="$store.getters.userRole != 'student'" class="col-md-12 text-center">
+        <button class="btn" @click="closeCase">بستن این مورد</button>
       </div>
 
 
@@ -64,20 +46,24 @@
 
 <script>
   export default {
-    name: "NewCase",
+    name: "SeeCase",
     data(){
       return {
         caseParam: {
-          sendDate: 'dd/mm/yyyy',
-          referrerNumbers: 'ارجاع به',
-          topic: 'موضوع',
-          type: '',
+          id: '125',
+          sendDate: '12/4/2019',
+          referrerNumbers: 'دکتر شمس فرد (مدیر دانشکده)',
+          topic: 'افزایش ساعات کاری کتابخانه',
+          type: 'درخواست',
           proceedingStatus: 'باز',
           satisfactionStatus: '',
-          comment: '',
+          comment: 'لطفا ساعات کاری کتابخانه در ایاف فرجه ها بیشتر شود',
         },
-        referrers : ['دکتر شمس','دکتر قوامی','دکتر علی اکبری'],
-        types : ['انتقاد','درخواست','پیشنهاد']
+      }
+    },
+    methods : {
+      closeCase() {
+        this.$router.push('/user/list/'+1);
       }
     },
     mounted() {

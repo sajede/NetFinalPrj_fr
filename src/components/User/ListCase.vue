@@ -1,182 +1,152 @@
 <template>
-  <div class="main">
-    <div class="form font" style="margin-bottom: 25px">
-      <div class="col-md-6" style="margin-right: 3%; margin-top: 30px; clear: both; margin-bottom: 10px">
-        <div class="column1-row1">
-          <h6 class="case-title">موضوع:</h6>
-          <h4 class="case-subtitle">درخواست</h4>
-        </div>
-        <div class="column1-row2" style="position: relative;display: flex;margin-top: 10%;">
-          <h6 class="case-title" >کاربر مسئول:</h6>
-          <h4 class="case-subtitle">دکتر شمس فرد (رئیس دانشکده)</h4>
-        </div>
-        <div class="column1-row3" style="position: relative;display: flex;margin-top: 5%;">
-          <h6 class="case-title" >تاریخ ثبت:</h6>
-          <h4 class="case-subtitle">5 خرداد 1398</h4>
-        </div>
-      </div>
-      <div class="col-md-6" style="margin-right: 1%; margin-top: 26px; ">
-        <div class="column2-row1">
-          <h6 class="case-title">عنوان:</h6>
-          <h4 class="case-subtitle">افزایش ساعت کاری کتابخانه در ایام فرجه</h4>
-        </div>
-        <div class="column2-row2" style="position: relative;display: flex;margin-top: 10%;">
-          <h6 class="case-title" >وضعیت:</h6>
-          <h4 class="case-subtitle">باز</h4>
-        </div>
-        <div class="column2-row3" style="position: relative;display: flex;margin-top: 5%;float: left; margin-left: 27%">
-          <a href="#opinion_popup">
-            <button class="button2">ثبت رضایت</button>
-          </a>
-          <button class="button1">مشاهده مورد</button>
-        </div>
-      </div>
-    </div>
-    <div id="opinion_popup" class="overlay">
-      <div class="popup" >
-        <div style="height: 30px;">
-          <a class="close" href="#">&times;</a>
-        </div>
-        <div>
-          <p style="text-align: right" class="font">رضایت دارین یا نه ؟</p>
-          <div style="display: table;margin: 0 auto">
-            <div style="display: flex;">
-              <a href="#" class="ravand-peygiri">
-                <img class="popup-img " style="flex: 0 0 20%" src="../../assets/img/angry.jpg" />
-              </a>
-              <a href="#" class="ravand-peygiri">
-                <img class="popup-img" style="flex: 0 0 20%" src="../../assets/img/sad.jpg" />
-              </a>
-              <a href="#" class="ravand-peygiri">
-                <img class="popup-img " style="flex: 0 0 20%" src="../../assets/img/poker.jpg" />
-              </a>
-              <a href="#" class="ravand-peygiri">
-                <img class="popup-img " style="flex: 0 0 20%" src="../../assets/img/good.jpg" />
-              </a>
-              <a href="#" class="ravand-peygiri">
-                <img class="popup-img " style="flex: 0 0 20%" src="../../assets/img/nice.jpg" />
-              </a>
-            </div>
+  <div>
+    <div class="form" v-for="caseParam in cases">
+      <div class="font">
 
+        <div class="row">
+          <div class="col-md-12">
+            <h3 class="title font">مورد</h3>
           </div>
         </div>
-        <div>
-          <p style="text-align: right" class="font">رضایت دارین یا نه ؟</p>
-          <div style="display: table;margin: 0 auto">
-            <div style="display: flex;">
-              <a href="#" class="rezayat">
-                <img class="popup-img " style="flex: 0 0 20%" src="../../assets/img/angry.jpg" />
-              </a>
-              <a href="#" class="rezayat">
-                <img class="popup-img" style="flex: 0 0 20%" src="../../assets/img/sad.jpg" />
-              </a>
-              <a href="#" class="rezayat">
-                <img class="popup-img " style="flex: 0 0 20%" src="../../assets/img/poker.jpg" />
-              </a>
-              <a href="#" class="rezayat">
-                <img class="popup-img " style="flex: 0 0 20%" src="../../assets/img/good.jpg" />
-              </a>
-              <a href="#" class="rezayat">
-                <img class="popup-img " style="flex: 0 0 20%" src="../../assets/img/nice.jpg" />
-              </a>
-            </div>
 
+        <div class="row">
+          <div class="col-md-6 row">
+            <h6 class="col-md-2 case-title">عنوان:</h6>
+            <h4 class="col-md-10 case-subtitle">{{ caseParam.topic }}</h4>
+          </div>
+          <div class="col-md-6 row">
+            <h6 class="col-md-2 case-title">موضوع:</h6>
+            <h4 class="col-md-10 case-subtitle">{{ caseParam.type }}</h4>
           </div>
         </div>
-        <div style="text-align: center;margin-top: 30px">
-          <button class="button1 font" >مشاهده مورد</button>
+
+        <div class="row">
+          <div class="col-md-6 row">
+            <h6 class="col-md-2 case-title" >وضعیت:</h6>
+            <h4 class="col-md-10 case-subtitle">{{ caseParam.proceedingStatus }}</h4>
+          </div>
+          <div class="col-md-6 row">
+            <h6 class="col-md-2 case-title" >کاربر مسئول:</h6>
+            <h4 class="col-md-10 case-subtitle">{{ caseParam.referrerNumbers }}</h4>
+          </div>
         </div>
+
+        <div class="row">
+          <div class="col-md-6 row"/>
+          <div class="col-md-6 row">
+            <h6 class="col-md-2 case-title" >تاریخ ثبت:</h6>
+            <h4 class="col-md-10 case-subtitle">{{ caseParam.sendDate }}</h4>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 row">
+            <a href="#opinion_popup">
+              <button class="btn button2">ثبت رضایت</button>
+            </a>
+            <button class="btn button1" @click="seeCase(caseParam.id)">مشاهده مورد</button>
+          </div>
+        </div>
+
+        <div id="opinion_popup" class="overlay">
+          <div class="popup" >
+            <div style="height: 30px;">
+              <a class="close" href="#">&times;</a>
+            </div>
+            <div>
+              <p style="text-align: right" class="font">رضایت دارین یا نه ؟</p>
+              <div style="display: table;margin: 0 auto">
+                <div style="display: flex;">
+                  <a href="#" class="rezayat">
+                    <img class="popup-img " style="flex: 0 0 20%" src="../../assets/img/angry.jpg" />
+                  </a>
+                  <a href="#" class="rezayat">
+                    <img class="popup-img" style="flex: 0 0 20%" src="../../assets/img/sad.jpg" />
+                  </a>
+                  <a href="#" class="rezayat">
+                    <img class="popup-img " style="flex: 0 0 20%" src="../../assets/img/poker.jpg" />
+                  </a>
+                  <a href="#" class="rezayat">
+                    <img class="popup-img " style="flex: 0 0 20%" src="../../assets/img/good.jpg" />
+                  </a>
+                  <a href="#" class="rezayat">
+                    <img class="popup-img " style="flex: 0 0 20%" src="../../assets/img/nice.jpg" />
+                  </a>
+                </div>
+
+              </div>
+            </div>
+            <div style="text-align: center;margin-top: 30px">
+              <button class="button1 font" >مشاهده مورد</button>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
+
   </div>
 </template>
 
 <script>
     export default {
-        name: "ListCase"
+      name: "ListCase",
+      data() {
+        return {
+          cases: [
+            {
+              id: '125',
+              sendDate: '12/4/2019',
+              referrerNumbers: 'دکتر شمس فرد (مدیر دانشکده)',
+              topic: 'افزایش ساعات کاری کتابخانه',
+              type: 'درخواست',
+              proceedingStatus: 'باز',
+              satisfactionStatus: '',
+              comment: 'لطفا ساعات کاری کتابخانه در ایاف فرجه ها بیشتر شود',
+            },
+          ],
+        }
+      },
+      methods : {
+        seeCase: function(id) {
+          this.$router.push('/user/case/'+id);
+        }
+      }
     }
 </script>
 
 <style scoped>
-  .form{
-    position: inherit !important;
-  }
-
-  .menu_item{
-    color: #9b9b9b;
-    margin-left: 110px;
-  }
-
-  .menu{
-    width: 65%;
-    margin:0 auto;
+  row {
+    direction: rtl;
   }
 
   .form{
-    position: relative;
-    max-width:92%;
-    height: auto;
-    margin: 0 auto;
+    direction: rtl;
+    max-width:92vw;
+    margin: 10px auto;
     background-color: #fbfbfb;
     border: solid 1px #d9d9d9;;
     border-radius: 1rem;
     z-index: 1;
-    display:flex;
-    direction: rtl;
-    padding-bottom: 20px;
+    padding: 3vh 5vw 8vh;
+  }
+
+  .title{
+    font-size: 30px;
+    font-weight: bold;
+    color: #333333;
   }
 
   .case-title{
     font-size: 14px;
     color: #727272;
     float: right;
-    margin-right: 5%;
   }
 
   .case-subtitle{
     font-size: 17px;
     color: #333333;
     float: right;
-    margin-right: 5%;
-  }
-
-  @media screen and (max-width:728px) {
-    .form {
-      height: auto;
-    }
-    .profile-input-1{
-      width: 85% !important;
-    }
-    .case-subtitle{
-      font-size: 14px;
-    }
-    .case-title{
-      font-size: 10px;
-    }
-    .column1-row2{
-      position: relative;
-      display: inline-flex !important;
-      margin-top: auto;
-    }
-    .column1-row3{
-      position: relative;
-      display: inline-flex !important;
-      margin-top: auto;
-    }
-    .column2-row1{
-      position: relative;
-      display: inline-flex !important;
-      margin-top: auto;
-    }
-    .column2-row2{
-      position: relative;
-      display: inline-flex !important;
-      margin-top: auto;
-    }
-    .column2-row3{
-      margin-left: 0px !important;
-    }
-
   }
 
   .button1{
