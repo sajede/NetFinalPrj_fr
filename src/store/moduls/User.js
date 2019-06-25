@@ -1,5 +1,6 @@
 const state = {
   user: {
+    id: '',
     userName: 'm.sajede',
     name: 'ساجده',
     family: 'محمدی',
@@ -20,7 +21,9 @@ const getters = {
 };
 
 const mutations = {
-
+  user : (state, user) => {
+    state.user = user;
+  }
 };
 
 export default {

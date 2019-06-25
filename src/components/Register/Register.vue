@@ -2,6 +2,15 @@
   <div class="panel">
     <div class="row form">
 
+
+      <div class="col-md-12" v-if="errorAlert.show">
+        <div class="alert alert-danger alert-dismissable">
+          <a class="panel-close close" data-dismiss="alert">×</a>
+          <i class="fa fa-coffee"></i>
+          <p>{{ errorAlert.text }}</p>
+        </div>
+      </div>
+
       <div class="col-md-6 hidden-sm">
         <img class="form-picture" src="../../assets/img/register-pic.png">
       </div>
@@ -94,6 +103,7 @@
       data(){
         return {
           user: {
+            id: '',
             userName: '',
             name: '',
             family: '',
@@ -102,7 +112,11 @@
             password: '',
             role: ''
           },
-          departments: []
+          departments: [],
+          errorAlert: {
+            show: false,
+            text: ''
+          }
         }
       },
       methods : {
@@ -114,8 +128,16 @@
             }).then(
             response =>{
               // success callback
-              this.$store.commit('sessionId', response.headers.get('SessionID') );
-
+              response.json().then(
+                data => {
+                  if (data.error = true){
+                    this.errorAlert=data;
+                  }
+                  else{
+                    this.$store.commit('user',data)
+                  }
+                }
+              )
             },
             error => {
               // error callback
@@ -124,7 +146,7 @@
       },
       mounted() {
 
-        this.$http.get('/departments',
+        this.$http.get('departments',
           {
             headers: {'SessionID': this.$store.getters.sessionId}
           }).then(
@@ -146,6 +168,9 @@
 </script>
 
 <style scoped>
+  .alert {
+    margin: 2vh 0;
+  }
 
   .panel{
     background-image: url('../../assets/img/register-bg.png');

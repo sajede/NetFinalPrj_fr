@@ -25,7 +25,7 @@ export default {
 
     this.$http.get('/session',
       {
-        // headers: {'SessionID': this.$store.getters.sessionId}
+        headers: {'SessionID': this.$store.getters.sessionId}
       }).then(
       response => {
         // success callback

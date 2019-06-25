@@ -40,7 +40,10 @@
     data(){
       return {
         user: {
+          id: '',
           userName: '',
+          name: '',
+          family:'',
           emailAddress: '',
           department:'',
           password: '',
